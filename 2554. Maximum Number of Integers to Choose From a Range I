@@ -1,0 +1,30 @@
+2554. Maximum Number of Integers to Choose From a Range I
+
+You are given an integer array banned and two integers n and maxSum.
+You are choosing some number of integers following the below rules:
+
+The chosen integers have to be in the range [1, n].
+Each integer can be chosen at most once.
+The chosen integers should not be in the array banned.
+The sum of the chosen integers should not exceed maxSum.
+
+Solution:-
+class Solution(object):
+    def maxCount(self, banned, n, maxSum):
+        banned = set(banned)
+        res, sum_, curr = 0, 0, 1
+        while curr <= n:
+            if curr not in banned:
+                if sum_ + curr <= maxSum:
+                    res += 1
+                    sum_ += curr
+                else: break
+            curr += 1
+        return res
+
+Input
+banned =[1,6,5]
+n =5
+maxSum =6
+Output
+2
